@@ -14,3 +14,5 @@ $(LOCAL_INSTALL_PATH)/rl : rl | $(LOCAL_INSTALL_PATH)
 $(LOCAL_INSTALL_PATH):
 	mkdir -p $@
 
+rl:
+	$(error missing file "$@")
