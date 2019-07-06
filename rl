@@ -12,7 +12,7 @@ do
         then
             exit 0
         else
-            exec "$@"
+            exec -- "$@"
         fi
     fi
     CURR_PATH=${CURR_PATH%/*}
