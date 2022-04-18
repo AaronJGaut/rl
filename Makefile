@@ -18,3 +18,7 @@ $(PREFIX)/bin/:
 
 rl rlmk:
 	$(error missing file "$@")
+
+push:
+	git remote | xargs -n1 git push
+.PHONY: push
