@@ -1,1 +1,2 @@
-shellcheck ../../rl
+set -e
+shellcheck ../../rl ../../rlmk

@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec make -C "$(rl printenv RL_ROOT)" -- "$@"
