@@ -1,5 +1,4 @@
 PREFIX ?= /usr/local
-BIN_NAME = rl
 
 default:
 	@echo "No default target."
@@ -8,14 +7,14 @@ default:
 	@exit 2
 .PHONY: default
 
-install: $(PREFIX)/bin/$(BIN_NAME)
+install: $(PREFIX)/bin/rl $(PREFIX)/bin/rlmk
 .PHONY: install
 
-$(PREFIX)/bin/$(BIN_NAME): $(BIN_NAME) | $(PREFIX)/bin/
-	install $(BIN_NAME) $(PREFIX)/bin/
+$(PREFIX)/bin/%: % | $(PREFIX)/bin/
+	install $* $(PREFIX)/bin/
 
 $(PREFIX)/bin/:
 	mkdir -p $@
 
-$(BIN_NAME):
+rl rlmk:
 	$(error missing file "$@")
