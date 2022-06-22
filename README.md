@@ -19,8 +19,6 @@ To run commands within this local context, do
 from anywhere within the project.
 While processing `rl.sh`, the `RL_ROOT` variable will be defined as the directory that `rl.sh` lives in.
 
-`rlmk` operates on top of `rl` and can be used to run `make` with the variables defined in `rl.sh` from anywhere in a project tree. It uses `rl` to find and source the project's `rl.sh` file, then runs `make` in the same directory as the `rl.sh` file, passing arguments through to `make`.
-
 # `rl` Example
 
     mkdir -p bin child_dir
@@ -31,3 +29,13 @@ While processing `rl.sh`, the `RL_ROOT` variable will be defined as the director
     rl example
 
 The script `bin/example` is found and executed on the last line, even from some other directory, because `rl.sh` adds it to the `PATH`.
+
+# `rlmk`
+
+`rlmk` is a shortcut to run `make` in the same directory as the `rl.sh` found by `rl`.
+Extra arguments are passed through to the `make` invocation.
+This may be useful to quickly run `PHONY` targets from anywhere in the project tree.
+
+`rlmk` doesn't automatically include the enviroment set up by `rl`. This is a deliberate design choice to discourage unintentially writing Makefiles that only work when run with `rl`. To run the Makefile with the `rl` enviroment, either run `rl` as needed within the Makefile or prefix the `rlmk` invocation with `rl` as you would with other commands:
+
+    rl rlmk <MAKE TARGET>
